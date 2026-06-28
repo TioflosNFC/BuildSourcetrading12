@@ -865,7 +865,7 @@ p { margin: 0; }
   transition: opacity 0.8s ease;
   background: var(--hb2-grad);
 }
-.hb2-slide.is-active { opacity: 1; visibility: visible; position: relative; }
+.hb2-slide.is-active { opacity: 1; visibility: visible; z-index: 1; }
 .hb2-pattern {
   position: absolute; inset: 0;
   background-image:
