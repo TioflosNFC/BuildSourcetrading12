@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Source — Finishing Materials | Addis Ababa</title>
+<meta name="description" content="Build Source supplies gypsum board, ceiling systems, partition systems, soundproofing and waterproofing materials in Addis Ababa. Built for quality, delivered for you.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Build Source logo">
+      <span class="brand-text">Build Source<small>Finishing Material</small></span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html" data-page="index.html">Home</a>
+      <a href="about.html" data-page="about.html">About</a>
+      <a href="products.html" data-page="products.html">Products</a>
+      <a href="services.html" data-page="services.html">Services</a>
+      <a href="gallery.html" data-page="gallery.html">Gallery</a>
+      <a href="contact.html" data-page="contact.html">Contact</a>
+      <a href="tel:+251911388498" class="btn btn-primary nav-mobile-cta">Call Now</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="tel:+251911388498" class="btn btn-primary nav-cta">Call Now</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO BANNER (full-bleed slideshow, photo-banner style) -->
+  <section class="hero-banner2" data-slideshow2>
+
+    <div class="hb2-slide is-active" data-slide2 style="--hb2-grad:linear-gradient(120deg,#0F3D75,#1A5DAD);">
+      <div class="hb2-pattern"></div>
+      <div class="hb2-overlay"></div>
+      <div class="container hb2-content">
+        <span class="hb2-label">Find top finishing materials in Addis Ababa</span>
+        <h1>QUALITY GYPSUM<br>&amp; CEILING SYSTEMS</h1>
+        <div class="hero-actions">
+          <a href="about.html" class="btn btn-white">Learn More</a>
+          <a href="products.html" class="btn btn-accent">Browse Products</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hb2-slide" data-slide2 style="--hb2-grad:linear-gradient(120deg,#16345C,#3FAE49);">
+      <div class="hb2-pattern"></div>
+      <div class="hb2-overlay"></div>
+      <div class="container hb2-content">
+        <span class="hb2-label">Built tough, built to last</span>
+        <h1>PARTITION &amp;<br>SOUNDPROOF SYSTEMS</h1>
+        <div class="hero-actions">
+          <a href="about.html" class="btn btn-white">Learn More</a>
+          <a href="products.html" class="btn btn-accent">Browse Products</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hb2-slide" data-slide2 style="--hb2-grad:linear-gradient(120deg,#0B2545,#E3C374);">
+      <div class="hb2-pattern"></div>
+      <div class="hb2-overlay"></div>
+      <div class="container hb2-content">
+        <span class="hb2-label">Protect every project</span>
+        <h1>WATERPROOF &amp;<br>ALUMINUM CEILING</h1>
+        <div class="hero-actions">
+          <a href="about.html" class="btn btn-white">Learn More</a>
+          <a href="products.html" class="btn btn-accent">Browse Products</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="hb2-arrow hb2-arrow-prev" data-slide2-prev aria-label="Previous slide">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="hb2-arrow hb2-arrow-next" data-slide2-next aria-label="Next slide">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="hb2-dots" data-slide2-dots></div>
+  </section>
+  <script>
+    (function(){
+      var slides = document.querySelectorAll('[data-slide2]');
+      var dotsHost = document.querySelector('[data-slide2-dots]');
+      var idx = 0;
+      if (!slides.length) return;
+      slides.forEach(function(_, i){
+        var dot = document.createElement('button');
+        dot.className = 'hb2-dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
+        dot.addEventListener('click', function(){ goTo(i); });
+        dotsHost.appendChild(dot);
+      });
+      var dots = dotsHost.querySelectorAll('.hb2-dot');
+      function goTo(i){
+        slides[idx].classList.remove('is-active');
+        dots[idx].classList.remove('is-active');
+        idx = (i + slides.length) % slides.length;
+        slides[idx].classList.add('is-active');
+        dots[idx].classList.add('is-active');
+      }
+      document.querySelector('[data-slide2-prev]').addEventListener('click', function(){ goTo(idx - 1); resetTimer(); });
+      document.querySelector('[data-slide2-next]').addEventListener('click', function(){ goTo(idx + 1); resetTimer(); });
+      var timer = setInterval(function(){ goTo(idx + 1); }, 5000);
+      function resetTimer(){ clearInterval(timer); timer = setInterval(function(){ goTo(idx + 1); }, 5000); }
+    })();
+  </script>
+
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="container trust-row">
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5V11C4 16 7.5 19.7 12 21C16.5 19.7 20 16 20 11V5L12 2Z" stroke="white" stroke-width="1.6"/></svg> Premium Quality Materials</div>
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="white" stroke-width="1.6"/><path d="M5 20C5 16.5 8 14.5 12 14.5C16 14.5 19 16.5 19 20" stroke="white" stroke-width="1.6"/></svg> Expert Installation Support</div>
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.2" stroke="white" stroke-width="1.6"/><path d="M12 7V12L15.5 14" stroke="white" stroke-width="1.6"/></svg> On-Time Delivery</div>
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 12L10.5 15.5L17.5 8" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg> Built for Quality, Delivered for You</div>
+    </div>
+  </div>
+
+  <!-- PRODUCT HIGHLIGHT -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What We Supply</span>
+        <h2>Eight material lines, one source.</h2>
+        <p>Everything you need to finish a ceiling, wall or facade — without juggling five suppliers.</p>
+      </div>
+      <div class="grid grid-4">
+        <article class="card product-card fade-up">
+          <div class="product-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="1" stroke="#1554A8" stroke-width="1.6"/><path d="M3 11H21" stroke="#1554A8" stroke-width="1.6"/></svg></div>
+          <span class="product-tag">Board</span>
+          <h3>Gypsum Board</h3>
+          <p>Standard, moisture-resistant and fire-rated boards for ceilings and partitions.</p>
+        </article>
+        <article class="card product-card fade-up">
+          <div class="product-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="1" stroke="#1554A8" stroke-width="1.6"/><path d="M3 10H21M9 10V20" stroke="#1554A8" stroke-width="1.6"/></svg></div>
+          <span class="product-tag">Ceiling</span>
+          <h3>Ceiling Systems</h3>
+          <p>Suspended grid and tile systems for offices, retail and residential spaces.</p>
+        </article>
+        <article class="card product-card fade-up">
+          <div class="product-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3V21M6 3V21M18 3V21" stroke="#1554A8" stroke-width="1.6"/></svg></div>
+          <span class="product-tag">Partition</span>
+          <h3>Partition Systems</h3>
+          <p>Drywall and demountable partition frames built for fast, clean installs.</p>
+        </article>
+        <article class="card product-card fade-up">
+          <div class="product-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12C4 12 8 6 12 6C16 6 20 12 20 12C20 12 16 18 12 18C8 18 4 12 4 12Z" stroke="#1554A8" stroke-width="1.6"/><circle cx="12" cy="12" r="2.2" stroke="#1554A8" stroke-width="1.6"/></svg></div>
+          <span class="product-tag">Acoustic</span>
+          <h3>Soundproof Systems</h3>
+          <p>Acoustic boards and insulation layers that cut noise transfer between rooms.</p>
+        </article>
+      </div>
+      <div class="text-center mt-2">
+        <a href="products.html" class="btn btn-secondary">View All 8 Product Lines</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="layer-divider" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+
+  <!-- WHY US -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why Build Source</span>
+        <h2>Material supply that respects your timeline.</h2>
+        <p>Finishing work stalls when materials don't show up. We built our delivery and stock process to remove that risk.</p>
+      </div>
+      <div class="grid grid-2" style="gap: clamp(2rem, 5vw, 4rem); align-items: start;">
+        <div>
+          <div class="feature-row">
+            <span class="feature-num">01</span>
+            <div><h4>Stock you can rely on</h4><p>Our 8 product lines are kept in regular stock, so your order doesn't wait on a re-supply cycle.</p></div>
+          </div>
+          <div class="feature-row">
+            <span class="feature-num">02</span>
+            <div><h4>Delivered to site</h4><p>Our own vehicle handles delivery across Addis Ababa, tracked from dispatch to drop-off.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="feature-row">
+            <span class="feature-num">03</span>
+            <div><h4>Installation guidance included</h4><p>Need advice on the right board, grid spacing or waterproofing layer? Our team talks it through with you first.</p></div>
+          </div>
+          <div class="feature-row">
+            <span class="feature-num">04</span>
+            <div><h4>Straightforward pricing</h4><p>No hidden markups between you and the material — quoted clearly, every time.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="cta-banner fade-up">
+        <h3>Have a project starting soon? Let's talk materials.</h3>
+        <div class="hero-actions" style="margin:0;">
+          <a href="https://wa.me/251901028789" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp Us</a>
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="logo.png" alt="Build Source logo">
+          <strong>Build Source</strong>
+        </div>
+        <p>Finishing materials for ceilings, partitions, soundproofing and waterproofing — supplied and delivered across Addis Ababa.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="tel:+251911388498">+251 911 388 498</a>
+        <a href="https://wa.me/251901028789" target="_blank" rel="noopener">WhatsApp: +251 901 028 789</a>
+        <a href="mailto:buildsource@gmail.com">buildsource@gmail.com</a>
+      </div>
+      <div class="footer-col">
+        <h5>Location</h5>
+        <p>Addis Ababa, Ethiopia</p>
+      </div>
+    </div>
+    <div class="truck-strip" aria-hidden="true">
+      <div class="truck-track"></div>
+      <div class="truck-icon"></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Build Source. All rights reserved.</span>
+      <span>Built for Quality, Delivered for You.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

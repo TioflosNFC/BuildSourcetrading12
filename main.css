@@ -850,3 +850,80 @@ p { margin: 0; }
 .image-preview { width: 100%; max-height: 160px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.9rem; display: none; }
 .modal-error { color: #B23B3B; font-size: var(--step--1); margin-top: 0.75rem; }
 .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem; }
+
+
+/* ===================== HERO BANNER 2 (photo-banner style) ===================== */
+.hero-banner2 {
+  position: relative;
+  min-height: clamp(480px, 78vh, 620px);
+  overflow: hidden;
+}
+.hb2-slide {
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.8s ease;
+  background: var(--hb2-grad);
+}
+.hb2-slide.is-active { opacity: 1; visibility: visible; position: relative; }
+.hb2-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.hb2-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(8,20,38,0.72) 0%, rgba(8,20,38,0.35) 55%, rgba(8,20,38,0.1) 100%);
+}
+.hb2-content { position: relative; z-index: 2; max-width: 620px; color: #fff; }
+.hb2-label {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #E3C374; margin-bottom: 16px;
+}
+.hb2-content h1 {
+  font-family: 'Archivo', sans-serif; font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 26px;
+}
+.btn-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: #0F3D75; font-weight: 700; padding: 13px 26px; border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.25); }
+.btn-accent {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #3FAE49; color: #fff; font-weight: 700; padding: 13px 26px; border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-accent:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(63,174,73,0.35); }
+
+.hb2-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(8,20,38,0.55); border: 1px solid rgba(255,255,255,0.25);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 3; transition: background 0.2s ease;
+}
+.hb2-arrow:hover { background: rgba(63,174,73,0.85); }
+.hb2-arrow-prev { left: 18px; }
+.hb2-arrow-next { right: 18px; }
+
+.hb2-dots {
+  position: absolute; left: 0; right: 0; bottom: 22px;
+  display: flex; justify-content: center; gap: 8px; z-index: 3;
+}
+.hb2-dot {
+  width: 9px; height: 9px; border-radius: 50%; border: none; cursor: pointer;
+  background: rgba(255,255,255,0.4); transition: background 0.2s ease, width 0.2s ease;
+}
+.hb2-dot.is-active { background: #E3C374; width: 24px; border-radius: 6px; }
+
+@media (max-width: 760px) {
+  .hero-banner2 { min-height: 520px; }
+  .hb2-arrow { width: 36px; height: 36px; }
+  .hb2-arrow-prev { left: 8px; }
+  .hb2-arrow-next { right: 8px; }
+}
