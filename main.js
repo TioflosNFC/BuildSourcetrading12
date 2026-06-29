@@ -16,8 +16,10 @@
     phoneHref: "tel:+251911388498",
     whatsapp: "+251 901 028 789",
     whatsappHref: "https://wa.me/251901028789",
-    email: "buildsource@gmail.com",
+    email: "Buildsoursetrading@gmail.com",
     address: "Addis Ababa, Ethiopia",
+    tiktokHref: "https://www.tiktok.com/@buildsourcetrading?_r=1&_t=ZS-97U4F4zvS5d",
+    mapsHref: "https://maps.app.goo.gl/7VUdG9PiHASHposQ7",
     supabaseUrl: "https://spdfwignzaejnnptbidt.supabase.co",
     supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwZGZ3aWduemFlam5ucHRiaWR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2MTg1MjUsImV4cCI6MjA5ODE5NDUyNX0.4SFmJDg15Y9TTU0MkIcwD_os9446DU8GyayOdW6szcY",
     formspreeEndpoint: "https://formspree.io/f/xkolbqng"

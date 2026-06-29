@@ -927,3 +927,27 @@ p { margin: 0; }
   .hb2-arrow-prev { left: 8px; }
   .hb2-arrow-next { right: 8px; }
 }
+
+/* ---- Footer social icons ---- */
+.footer-social { display: flex; gap: 10px; margin-top: 4px; }
+.social-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center; color: #fff;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.social-icon:hover { background: #3FAE49; transform: translateY(-2px); }
+
+/* ---- Contact page map card ---- */
+.map-card {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: linear-gradient(135deg, #0F3D75, #1A5DAD);
+  border-radius: var(--radius-md, 8px); padding: 22px; margin-top: 18px; color: #fff;
+}
+.map-card-icon {
+  flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+}
+.map-card h4 { font-size: 1rem; margin-bottom: 4px; color: #fff; }
+.map-card p { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin: 0; }
