@@ -84,8 +84,10 @@
   function toggleAuthUI(isAuthed) {
     var loginPane = document.querySelector("[data-login-pane]");
     var adminPane = document.querySelector("[data-admin-pane]");
+    var logoutBtn = document.querySelector("[data-logout]");
     if (loginPane) loginPane.style.display = isAuthed ? "none" : "block";
     if (adminPane) adminPane.style.display = isAuthed ? "block" : "none";
+    if (logoutBtn) logoutBtn.style.display = isAuthed ? "inline-flex" : "none";
   }
 
   function bindLoginForm() {
