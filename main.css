@@ -5,20 +5,25 @@
    =========================================================== */
 
 :root {
-  /* Color */
+  /* Color — dark navy luxury palette */
   --bs-blue: #1554A8;
-  --bs-blue-deep: #0E3D7D;
-  --bs-blue-pale: #E8EFFA;
+  --bs-blue-deep: #0A1F3D;
+  --bs-blue-pale: #0F2D5A;
   --bs-green: #3FA34D;
   --bs-green-deep: #2E7E3A;
-  --bs-green-pale: #E9F6EC;
-  --bs-paper: #F7F5F0;       /* warm off-white, like raw gypsum */
-  --bs-paper-deep: #EFEBE2;
-  --bs-charcoal: #1C1F26;
-  --bs-steel: #6B7280;
-  --bs-steel-light: #D8D4C8;
-  --bs-line: #DEDACD;
+  --bs-green-pale: #0E2A12;
+  --bs-paper: #080F1E;        /* deep navy base */
+  --bs-paper-deep: #060C18;
+  --bs-charcoal: #E8E4D9;     /* light text on dark bg */
+  --bs-steel: #9AA3B0;
+  --bs-steel-light: #2A3548;
+  --bs-line: #1E2D45;
   --bs-white: #FFFFFF;
+  /* Gold accents */
+  --gold: #D4AF5A;
+  --gold-light: #E8CC7A;
+  --gold-dark: #B8932A;
+  --gold-glow: rgba(212,175,90,0.18);
 
   /* Type */
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
@@ -66,6 +71,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+/* Luxury scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #060C18; }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ul { margin: 0; padding: 0; list-style: none; }
@@ -75,7 +84,7 @@ h1, h2, h3, h4 {
   margin: 0;
   line-height: 1.08;
   letter-spacing: -0.01em;
-  color: var(--bs-blue-deep);
+  color: var(--bs-charcoal);
 }
 p { margin: 0; }
 
@@ -132,8 +141,8 @@ p { margin: 0; }
 .btn-primary:hover { background: var(--bs-green-deep); box-shadow: var(--shadow-md); }
 .btn-secondary {
   background: transparent;
-  color: var(--bs-blue-deep);
-  border-color: var(--bs-blue-deep);
+  color: var(--bs-charcoal);
+  border-color: var(--bs-charcoal);
 }
 .btn-secondary:hover { background: var(--bs-blue-deep); color: var(--bs-white); }
 .btn-ghost {
@@ -173,7 +182,7 @@ p { margin: 0; }
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.05rem;
-  color: var(--bs-blue-deep);
+  color: var(--bs-charcoal);
 }
 .brand img { height: 40px; width: auto; transition: height 0.3s var(--ease); }
 .site-header.is-scrolled .brand img { height: 32px; }
@@ -209,7 +218,7 @@ p { margin: 0; }
 }
 .nav-links a:hover::after,
 .nav-links a.is-active::after { width: 100%; }
-.nav-links a.is-active { color: var(--bs-blue-deep); }
+.nav-links a.is-active { color: var(--bs-charcoal); }
 
 .nav-actions { display: flex; align-items: center; gap: 0.9rem; }
 .nav-cta { display: none; }
@@ -297,7 +306,7 @@ p { margin: 0; }
   display: block;
   font-family: var(--font-display);
   font-size: var(--step-2);
-  color: var(--bs-blue-deep);
+  color: var(--bs-charcoal);
   font-weight: 800;
 }
 .hero-meta-item span { color: var(--bs-steel); }
@@ -345,7 +354,7 @@ p { margin: 0; }
   border: 1px solid var(--bs-blue);
   animation-delay: 0.4s;
 }
-.panel-grid .panel-label { color: var(--bs-blue-deep); }
+.panel-grid .panel-label { color: var(--bs-charcoal); }
 .panel-frame {
   top: 64%;
   width: 70%;
@@ -462,7 +471,7 @@ p { margin: 0; }
   border-radius: var(--radius-sm);
   background: var(--bs-blue-pale);
   display: flex; align-items: center; justify-content: center;
-  color: var(--bs-blue-deep);
+  color: var(--bs-charcoal);
 }
 .product-card h3 { font-size: var(--step-1); }
 .product-card p { color: var(--bs-steel); font-size: var(--step--1); }
@@ -617,7 +626,7 @@ p { margin: 0; }
   font-size: var(--step--1);
   font-weight: 600;
   margin-bottom: 0.45rem;
-  color: var(--bs-blue-deep);
+  color: var(--bs-charcoal);
 }
 .form-field input,
 .form-field textarea,
@@ -678,7 +687,7 @@ p { margin: 0; }
   padding: 3rem 1rem;
   color: var(--bs-steel);
 }
-.empty-state h4 { color: var(--bs-blue-deep); margin-bottom: 0.5rem; }
+.empty-state h4 { color: var(--bs-charcoal); margin-bottom: 0.5rem; }
 
 /* ===================== PRODUCT / GALLERY THUMBS ===================== */
 .product-thumb, .gallery-thumb {
@@ -697,7 +706,7 @@ p { margin: 0; }
 .product-price {
   font-family: var(--font-mono);
   font-size: var(--step--1);
-  color: var(--bs-blue-deep);
+  color: var(--bs-charcoal);
   font-weight: 600;
 }
 .gallery-card { padding: 0; overflow: hidden; }
@@ -721,8 +730,8 @@ p { margin: 0; }
   color: var(--bs-steel);
   transition: all 0.2s var(--ease);
 }
-.filter-pill:hover { border-color: var(--bs-blue); color: var(--bs-blue-deep); }
-.filter-pill.is-active-filter { background: var(--bs-blue-deep); border-color: var(--bs-blue-deep); color: var(--bs-white); }
+.filter-pill:hover { border-color: var(--bs-blue); color: var(--bs-charcoal); }
+.filter-pill.is-active-filter { background: var(--bs-blue-deep); border-color: var(--bs-charcoal); color: var(--bs-white); }
 
 /* ===================== SERVICES PAGE ===================== */
 .service-block {
@@ -757,7 +766,7 @@ p { margin: 0; }
   margin-bottom: 1.6rem;
 }
 .contact-info-item .product-icon { flex-shrink: 0; }
-.contact-info-item h4 { font-size: 1rem; margin-bottom: 0.2rem; color: var(--bs-blue-deep); }
+.contact-info-item h4 { font-size: 1rem; margin-bottom: 0.2rem; color: var(--bs-charcoal); }
 .contact-info-item p, .contact-info-item a { color: var(--bs-steel); font-size: var(--step--1); display: block; }
 .contact-info-item a:hover { color: var(--bs-blue); }
 .contact-card { background: var(--bs-white); border: 1px solid var(--bs-line); border-radius: var(--radius-md); padding: clamp(1.75rem, 4vw, 2.5rem); box-shadow: var(--shadow-sm); }
@@ -809,7 +818,7 @@ p { margin: 0; }
   border: 1.5px solid var(--bs-line);
   color: var(--bs-steel);
 }
-.admin-tab.is-active-tab { background: var(--bs-blue-deep); border-color: var(--bs-blue-deep); color: var(--bs-white); }
+.admin-tab.is-active-tab { background: var(--bs-blue-deep); border-color: var(--bs-charcoal); color: var(--bs-white); }
 .admin-panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
 
 .admin-table-wrap { background: var(--bs-white); border: 1px solid var(--bs-line); border-radius: var(--radius-md); overflow-x: auto; }
@@ -951,3 +960,238 @@ p { margin: 0; }
 }
 .map-card h4 { font-size: 1rem; margin-bottom: 4px; color: #fff; }
 .map-card p { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin: 0; }
+
+/* =============================================================
+   LUXURY LAYER — animations, hover effects, gold accents
+   ============================================================= */
+
+/* --- Gold selection highlight --- */
+::selection { background: var(--gold); color: #080F1E; }
+
+/* --- Smooth reveal animations --- */
+@keyframes lux-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes lux-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes lux-slide-right {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes gold-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.lux-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+}
+.lux-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.lux-reveal-delay-1 { transition-delay: 0.1s; }
+.lux-reveal-delay-2 { transition-delay: 0.2s; }
+.lux-reveal-delay-3 { transition-delay: 0.3s; }
+.lux-reveal-delay-4 { transition-delay: 0.4s; }
+
+/* --- Gold divider line --- */
+.gold-divider {
+  display: block; width: 48px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  background-size: 200% 100%;
+  animation: gold-shimmer 3s linear infinite;
+  margin: 14px 0 20px;
+  border-radius: 2px;
+}
+
+/* --- Section headers gold accent --- */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 6px; display: block;
+}
+
+/* --- Product cards — luxury hover --- */
+.product-card {
+  background: linear-gradient(145deg, #0D1A2E, #111D33) !important;
+  border: 1px solid var(--bs-line) !important;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+.product-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--gold-glow) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.product-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 48px rgba(212,175,90,0.18), 0 0 0 1px var(--gold) !important;
+  border-color: var(--gold) !important;
+}
+.product-card:hover::before { opacity: 1; }
+.product-card h3 { color: var(--bs-charcoal) !important; }
+.product-card p  { color: var(--bs-steel) !important; }
+.product-card .product-price { color: var(--gold) !important; }
+.product-card .product-icon { background: var(--gold-glow) !important; border: 1px solid rgba(212,175,90,0.3) !important; }
+.product-card .product-icon svg { stroke: var(--gold) !important; }
+.product-card .product-cat { background: rgba(212,175,90,0.1) !important; color: var(--gold) !important; }
+
+/* --- Why / value cards --- */
+.why-card, .value-card {
+  background: linear-gradient(145deg, #0D1A2E, #111D33);
+  border: 1px solid var(--bs-line);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: transform 0.4s var(--ease), border-color 0.35s ease, box-shadow 0.4s ease;
+}
+.why-card:hover, .value-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 16px 40px rgba(212,175,90,0.14);
+}
+
+/* --- Service cards --- */
+.service-card {
+  background: linear-gradient(145deg, #0D1A2E, #111D33);
+  border: 1px solid var(--bs-line);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  transition: transform 0.4s var(--ease), border-color 0.35s ease, box-shadow 0.4s ease;
+  position: relative; overflow: hidden;
+}
+.service-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s var(--ease);
+}
+.service-card:hover { transform: translateY(-6px); border-color: rgba(212,175,90,0.3); box-shadow: 0 16px 40px rgba(212,175,90,0.12); }
+.service-card:hover::after { transform: scaleX(1); }
+
+/* --- Testimonial cards --- */
+.testimonial-card {
+  background: linear-gradient(145deg, #0D1A2E, #111D33) !important;
+  border: 1px solid var(--bs-line) !important;
+  transition: transform 0.4s var(--ease), border-color 0.35s ease !important;
+}
+.testimonial-card:hover { transform: translateY(-5px) !important; border-color: rgba(212,175,90,0.4) !important; }
+.testimonial-card .stars { color: var(--gold) !important; }
+
+/* --- Navigation luxury --- */
+.site-nav { border-bottom: 1px solid transparent; transition: border-color 0.3s ease, background 0.3s ease; }
+.site-nav.is-scrolled { background: rgba(8,15,30,0.92) !important; backdrop-filter: blur(14px); border-bottom-color: var(--bs-line); }
+.nav-link { position: relative; }
+.nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+.nav-link:hover::after, .nav-link.is-active::after { width: 100%; }
+.nav-link:hover { color: var(--gold) !important; }
+
+/* --- Buttons gold treatment --- */
+.btn-primary {
+  background: linear-gradient(135deg, #1A5DAD, #0F3D75) !important;
+  border: 1px solid rgba(212,175,90,0.25) !important;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212,175,90,0.15), transparent);
+  transition: left 0.5s ease;
+}
+.btn-primary:hover { transform: translateY(-2px) !important; box-shadow: 0 10px 28px rgba(15,61,117,0.4), 0 0 0 1px rgba(212,175,90,0.3) !important; }
+.btn-primary:hover::after { left: 140%; }
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+  color: #080F1E !important;
+  font-weight: 700;
+  border: none !important;
+  box-shadow: 0 4px 18px rgba(212,175,90,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.btn-gold:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 30px rgba(212,175,90,0.4) !important; }
+
+.btn-white:hover { box-shadow: 0 8px 24px rgba(255,255,255,0.2) !important; }
+.btn-accent:hover { box-shadow: 0 8px 24px rgba(63,163,77,0.35) !important; }
+
+/* --- Contact info items --- */
+.contact-info-item {
+  background: linear-gradient(145deg, #0D1A2E, #111D33);
+  border: 1px solid var(--bs-line);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  display: flex; align-items: center; gap: 14px;
+}
+.contact-info-item:hover { border-color: var(--gold); transform: translateX(5px); }
+.contact-info-item h4 { color: var(--gold); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+
+/* --- Footer luxury --- */
+.site-footer {
+  background: linear-gradient(180deg, #060C18, #040810) !important;
+  border-top: 1px solid var(--bs-line) !important;
+}
+.site-footer h5 { color: var(--gold) !important; }
+.site-footer a:hover { color: var(--gold) !important; }
+
+/* --- Gold border glow on focus --- */
+input:focus, textarea:focus, select:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(212,175,90,0.12) !important;
+  outline: none;
+}
+
+/* --- Delivery strip upgrade --- */
+.delivery-strip {
+  background: linear-gradient(135deg, #080F1E, #0A1929) !important;
+  border-top: 1px solid var(--bs-line);
+  border-bottom: 1px solid var(--bs-line);
+}
+.delivery-strip h3 { color: var(--gold) !important; }
+
+/* --- Section alternating backgrounds --- */
+.section-alt { background: #060C18 !important; }
+.section-main { background: #080F1E !important; }
+
+/* --- Stat numbers in gold --- */
+.stat-number, .hero-meta-item strong { color: var(--gold) !important; }
+
+/* --- Gallery project cards --- */
+.project-card {
+  background: linear-gradient(145deg, #0D1A2E, #111D33) !important;
+  border: 1px solid var(--bs-line) !important;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+.project-card:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  box-shadow: 0 20px 50px rgba(212,175,90,0.16) !important;
+  border-color: var(--gold) !important;
+}
+.project-card img {
+  transition: transform 0.6s var(--ease);
+}
+.project-card:hover img { transform: scale(1.06); }
+
+/* --- Page hero dark tint --- */
+.page-hero-inner { position: relative; z-index: 2; }
+
+/* --- Admin panel dark mode --- */
+.admin-shell { background: #080F1E !important; }
+.admin-card { background: #0D1A2E !important; border-color: var(--bs-line) !important; }
+.admin-table th { color: var(--gold) !important; border-color: var(--bs-line) !important; }
+.admin-table td { border-color: var(--bs-line) !important; }
+.admin-tab.is-active { color: var(--gold) !important; border-bottom-color: var(--gold) !important; }
+

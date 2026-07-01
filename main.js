@@ -130,3 +130,27 @@
     });
   });
 })();
+
+/* ---- Luxury scroll-reveal ---- */
+(function () {
+  var selectors = [
+    '.product-card', '.why-card', '.value-card', '.service-card',
+    '.testimonial-card', '.project-card', '.contact-info-item',
+    '.section-head', '.fade-up', '.step', '.hero-meta-item'
+  ];
+  var els = document.querySelectorAll(selectors.join(','));
+  els.forEach(function (el, i) {
+    el.classList.add('lux-reveal');
+    var delay = i % 4;
+    if (delay > 0) el.classList.add('lux-reveal-delay-' + delay);
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function (el) { io.observe(el); });
+})();
