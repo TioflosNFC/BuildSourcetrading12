@@ -1,124 +1,134 @@
-/* ===========================================================
+/* =============================================================
    BUILD SOURCE — products.js
-   Fetches products from Supabase 'products' table and renders
-   them into any element with [data-products-grid].
-   Table shape expected: id, name, price, image_url, category, created_at
-   Falls back to a friendly empty state if Supabase isn't reachable yet.
-   =========================================================== */
+   Cinematic full-screen product showcase
+   Table: products (id, name, price, image_url, category, description, created_at)
+   ============================================================= */
 
-(function () {
-  "use strict";
+var ALL_PRODUCTS = [];
+var ACTIVE_CAT = 'all';
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var mounts = document.querySelectorAll("[data-products-grid]");
-    if (!mounts.length) return;
-    mounts.forEach(loadProductsInto);
+var ICONS = {
+  default: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1" stroke="currentColor"/><path d="M3 11H21" stroke="currentColor"/></svg>',
+  ceiling: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 8L12 4L21 8V18H3V8Z" stroke="currentColor"/></svg>',
+  partition: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M4 4V20M12 4V20M20 4V20" stroke="currentColor"/></svg>',
+  waterproof: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3C12 3 6 10 6 14a6 6 0 0012 0c0-4-6-11-6-11z" stroke="currentColor"/></svg>',
+  sound: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="12" cy="12" r="9" stroke="currentColor"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="currentColor"/></svg>',
+  aluminum: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor"/><path d="M4 14L9 9L13 13L20 6" stroke="currentColor"/></svg>',
+  cement: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M4 21V8l8-5 8 5v13M4 21h16M9 21v-6h6v6" stroke="currentColor"/></svg>'
+};
+
+function getIcon(category) {
+  if (!category) return ICONS.default;
+  var c = category.toLowerCase();
+  if (c.includes('ceiling')) return ICONS.ceiling;
+  if (c.includes('partition')) return ICONS.partition;
+  if (c.includes('water')) return ICONS.waterproof;
+  if (c.includes('sound')) return ICONS.sound;
+  if (c.includes('alum') || c.includes('armstrong')) return ICONS.aluminum;
+  if (c.includes('cement')) return ICONS.cement;
+  return ICONS.default;
+}
+
+function renderProducts(products) {
+  var grid = document.getElementById('productShowcase');
+  if (!grid) return;
+
+  if (!products || products.length === 0) {
+    grid.innerHTML = '<div class="cin-empty">No products found in this category.<br><a href="contact.html" style="color:var(--gold);">Contact us for current stock →</a></div>';
+    return;
+  }
+
+  grid.innerHTML = products.map(function(p, i) {
+    var num = String(i + 1).padStart(2, '0');
+    var total = String(products.length).padStart(2, '0');
+
+    var visual = p.image_url
+      ? '<img class="cin-product-img" src="' + escapeHtml(p.image_url) + '" alt="' + escapeHtml(p.name || '') + '" loading="lazy">'
+      : '<div class="cin-product-icon-box">' + getIcon(p.category) + '</div>';
+
+    var price = p.price
+      ? '<div class="cin-product-price">' + escapeHtml(p.price) + '</div>'
+      : '<div class="cin-product-price tbd">Contact for price</div>';
+
+    return [
+      '<article class="cin-product" data-category="' + escapeHtml(p.category || '') + '">',
+      '  <div class="cin-product-left">',
+      '    <div class="cin-product-num">' + num + ' / ' + total + '</div>',
+      '    <h2 class="cin-product-name">' + escapeHtml(p.name || '') + '</h2>',
+      '    <div class="cin-product-divider"></div>',
+      '    <p class="cin-product-desc">' + escapeHtml(p.description || 'Premium finishing material supplied and delivered across Addis Ababa.') + '</p>',
+      '  </div>',
+      '  <div class="cin-product-center">' + visual + '</div>',
+      '  <div class="cin-product-right">',
+      '    <div>',
+      '      <div class="cin-product-price-label">Price</div>',
+      price,
+      '    </div>',
+      p.category ? '<div class="cin-product-cat">' + escapeHtml(p.category) + '</div>' : '',
+      '    <a href="https://wa.me/251901028789?text=Hi%2C%20I%20am%20interested%20in%20' + encodeURIComponent(p.name || 'your products') + '" target="_blank" rel="noopener" class="cin-product-cta">Request Quote →</a>',
+      '  </div>',
+      '</article>'
+    ].join('');
+  }).join('');
+
+  // Trigger cinematic reveal for newly inserted products
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('cin-visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  grid.querySelectorAll('.cin-product').forEach(function(el) { observer.observe(el); });
+}
+
+function buildFilters(products) {
+  var row = document.getElementById('productFilters');
+  if (!row) return;
+  var cats = ['all'].concat(
+    products.map(function(p) { return p.category; })
+      .filter(function(c, i, a) { return c && a.indexOf(c) === i; })
+  );
+  row.innerHTML = cats.map(function(c) {
+    return '<button class="pf-chip' + (c === 'all' ? ' active' : '') + '" data-cat="' + escapeHtml(c) + '">' + (c === 'all' ? 'All Products' : escapeHtml(c)) + '</button>';
+  }).join('');
+  row.querySelectorAll('.pf-chip').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      row.querySelectorAll('.pf-chip').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      ACTIVE_CAT = btn.dataset.cat;
+      var filtered = ACTIVE_CAT === 'all' ? ALL_PRODUCTS : ALL_PRODUCTS.filter(function(p) { return p.category === ACTIVE_CAT; });
+      renderProducts(filtered);
+    });
   });
+}
 
-  function loadProductsInto(mount) {
-    var limit = parseInt(mount.getAttribute("data-limit") || "0", 10);
-    renderSkeleton(mount);
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
-    if (!isSupabaseConfigured()) {
-      renderEmpty(mount, "Products are loading", "Connect Supabase to show live products here.");
+async function loadProducts() {
+  var grid = document.getElementById('productShowcase');
+  if (!grid) return;
+  grid.innerHTML = '<div class="cin-empty"><span class="spinner"></span> Loading products…</div>';
+
+  try {
+    var res = await window.bsClient.from('products').select('*').order('created_at', { ascending: false });
+    if (res.error) throw res.error;
+    ALL_PRODUCTS = res.data || [];
+
+    if (ALL_PRODUCTS.length === 0) {
+      grid.innerHTML = '<div class="cin-empty">No products listed yet.<br><a href="contact.html" style="color:var(--gold);">Contact us for current stock →</a></div>';
       return;
     }
-
-    var query = window.bsClient
-      .from("products")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (limit > 0) query = query.limit(limit);
-
-    query.then(function (res) {
-      if (res.error) {
-        console.error("products fetch error:", res.error);
-        renderEmpty(mount, "Couldn't load products", "Please refresh, or check back shortly.");
-        return;
-      }
-      var rows = res.data || [];
-      if (!rows.length) {
-        renderEmpty(mount, "Products coming soon", "Our catalogue is being updated — check back shortly.");
-        return;
-      }
-      mount.innerHTML = rows.map(renderProductCard).join("");
-      if (window.bsReinitFadeUp) window.bsReinitFadeUp(mount);
-      else reinitFadeUpLocal(mount);
-    }).catch(function (err) {
-      console.error("products fetch exception:", err);
-      renderEmpty(mount, "Couldn't load products", "Please refresh, or check back shortly.");
-    });
+    buildFilters(ALL_PRODUCTS);
+    renderProducts(ALL_PRODUCTS);
+  } catch (err) {
+    console.error(err);
+    grid.innerHTML = '<div class="cin-empty">Couldn\'t load products right now.<br>Please <a href="contact.html" style="color:var(--gold);">contact us directly</a> or try refreshing.</div>';
   }
+}
 
-  function renderProductCard(p) {
-    var img = p.image_url
-      ? '<img src="' + escapeAttr(p.image_url) + '" alt="' + escapeAttr(p.name) + '" loading="lazy">'
-      : '<div class="product-img-placeholder" aria-hidden="true">' + iconSvg() + "</div>";
-    var price = p.price ? '<span class="product-price">' + escapeHtml(p.price) + "</span>" : "";
-    var category = p.category ? '<span class="product-tag">' + escapeHtml(p.category) + "</span>" : "";
-    return (
-      '<article class="card product-card fade-up">' +
-      '<div class="product-thumb">' + img + "</div>" +
-      category +
-      "<h3>" + escapeHtml(p.name || "Untitled product") + "</h3>" +
-      price +
-      "</article>"
-    );
-  }
-
-  function renderSkeleton(mount) {
-    var n = parseInt(mount.getAttribute("data-limit") || "4", 10) || 4;
-    var html = "";
-    for (var i = 0; i < n; i++) {
-      html += '<div class="card product-card"><div class="skeleton" style="height:140px;margin-bottom:1rem;"></div><div class="skeleton" style="height:18px;width:70%;margin-bottom:0.5rem;"></div><div class="skeleton" style="height:14px;width:40%;"></div></div>';
-    }
-    mount.innerHTML = html;
-  }
-
-  function renderEmpty(mount, title, body) {
-    mount.innerHTML =
-      '<div class="empty-state" style="grid-column:1/-1;"><h4>' +
-      escapeHtml(title) +
-      "</h4><p>" +
-      escapeHtml(body) +
-      "</p></div>";
-  }
-
-  function reinitFadeUpLocal(mount) {
-    var els = mount.querySelectorAll(".fade-up");
-    if (!("IntersectionObserver" in window)) {
-      els.forEach(function (el) { el.classList.add("is-visible"); });
-      return;
-    }
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    els.forEach(function (el) { observer.observe(el); });
-  }
-
-  function iconSvg() {
-    return '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9L12 3L21 9V20H3V9Z" stroke="#1554A8" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 20V13H15V20" stroke="#1554A8" stroke-width="1.5"/></svg>';
-  }
-
-  function isSupabaseConfigured() {
-    return (
-      window.bsClient &&
-      window.BS_CONFIG &&
-      window.BS_CONFIG.supabaseAnonKey &&
-      window.BS_CONFIG.supabaseAnonKey.indexOf("REPLACE_WITH") !== 0
-    );
-  }
-
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-  function escapeAttr(str) { return escapeHtml(str); }
-})();
+document.addEventListener('DOMContentLoaded', loadProducts);

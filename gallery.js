@@ -1,152 +1,90 @@
-/* ===========================================================
-   BUILD SOURCE — gallery.js
-   Fetches projects from Supabase 'projects' table and renders
-   them into [data-gallery-grid], with simple category filtering.
-   Table shape expected: id, title, category, note, image_url, created_at
-   =========================================================== */
+var ALL_PROJECTS = [];
+var ACTIVE_CAT = 'all';
 
-(function () {
-  "use strict";
-  var allRows = [];
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var mount = document.querySelector("[data-gallery-grid]");
-    if (!mount) return;
-    loadGallery(mount);
-    initFilters(mount);
-  });
-
-  function loadGallery(mount) {
-    renderSkeleton(mount);
-
-    if (!isSupabaseConfigured()) {
-      renderEmpty(mount, "Gallery is loading", "Connect Supabase to show project photos here.");
-      return;
-    }
-
-    window.bsClient
-      .from("projects")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .then(function (res) {
-        if (res.error) {
-          console.error("gallery fetch error:", res.error);
-          renderEmpty(mount, "Couldn't load gallery", "Please refresh, or check back shortly.");
-          return;
-        }
-        allRows = res.data || [];
-        if (!allRows.length) {
-          renderEmpty(mount, "Gallery coming soon", "Project photos will appear here once added.");
-          return;
-        }
-        renderRows(mount, allRows);
-        buildFilterPills(allRows);
-      })
-      .catch(function (err) {
-        console.error("gallery fetch exception:", err);
-        renderEmpty(mount, "Couldn't load gallery", "Please refresh, or check back shortly.");
-      });
+function renderProjects(projects) {
+  var grid = document.getElementById('projectGrid');
+  if (!grid) return;
+  if (!projects || projects.length === 0) {
+    grid.innerHTML = '<div class="cin-empty" style="grid-column:1/-1;">No projects in this category yet.</div>';
+    return;
   }
-
-  function initFilters(mount) {
-    var bar = document.querySelector("[data-gallery-filters]");
-    if (!bar) return;
-    bar.addEventListener("click", function (e) {
-      var btn = e.target.closest("[data-filter]");
-      if (!btn) return;
-      bar.querySelectorAll("[data-filter]").forEach(function (b) { b.classList.remove("is-active-filter"); });
-      btn.classList.add("is-active-filter");
-      var val = btn.getAttribute("data-filter");
-      var filtered = val === "all" ? allRows : allRows.filter(function (r) { return r.category === val; });
-      renderRows(mount, filtered);
-    });
-  }
-
-  function buildFilterPills(rows) {
-    var bar = document.querySelector("[data-gallery-filters]");
-    if (!bar) return;
-    var cats = Array.from(new Set(rows.map(function (r) { return r.category; }).filter(Boolean)));
-    if (!cats.length) return;
-    var html = '<button class="filter-pill is-active-filter" data-filter="all">All Projects</button>';
-    cats.forEach(function (c) {
-      html += '<button class="filter-pill" data-filter="' + escapeAttr(c) + '">' + escapeHtml(c) + "</button>";
-    });
-    bar.innerHTML = html;
-  }
-
-  function renderRows(mount, rows) {
-    if (!rows.length) {
-      renderEmpty(mount, "No projects in this category yet", "Try another filter.");
-      return;
-    }
-    mount.innerHTML = rows.map(renderGalleryCard).join("");
-    reinitFadeUpLocal(mount);
-  }
-
-  function renderGalleryCard(p) {
+  grid.innerHTML = projects.map(function(p) {
     var img = p.image_url
-      ? '<img src="' + escapeAttr(p.image_url) + '" alt="' + escapeAttr(p.title) + '" loading="lazy">'
-      : '<div class="product-img-placeholder" aria-hidden="true"></div>';
-    var category = p.category ? '<span class="product-tag">' + escapeHtml(p.category) + "</span>" : "";
-    var note = p.note ? "<p>" + escapeHtml(p.note) + "</p>" : "";
-    return (
-      '<article class="card gallery-card fade-up">' +
-      '<div class="gallery-thumb">' + img + "</div>" +
-      '<div class="gallery-card-body">' +
-      category +
-      "<h3>" + escapeHtml(p.title || "Project") + "</h3>" +
-      note +
-      "</div></article>"
-    );
-  }
+      ? '<img src="' + escapeHtml(p.image_url) + '" alt="' + escapeHtml(p.title) + '" loading="lazy">'
+      : '<div style="width:100%;height:100%;background:linear-gradient(135deg,#0D1A2E,#1A3050);"></div>';
+    return [
+      '<div class="cin-gallery-item cin-scale" onclick="openLightbox(\'' + escapeHtml(p.image_url || '') + '\',\'' + escapeHtml(p.title) + '\')">',
+      img,
+      '<div class="cin-gallery-overlay">',
+      '<div><h3>' + escapeHtml(p.title) + '</h3>',
+      p.category ? '<p>' + escapeHtml(p.category) + (p.note ? ' — ' + escapeHtml(p.note) : '') + '</p>' : '',
+      '</div></div></div>'
+    ].join('');
+  }).join('');
 
-  function renderSkeleton(mount) {
-    var html = "";
-    for (var i = 0; i < 6; i++) {
-      html += '<div class="card gallery-card"><div class="skeleton" style="height:180px;margin-bottom:1rem;"></div><div class="skeleton" style="height:16px;width:60%;"></div></div>';
-    }
-    mount.innerHTML = html;
-  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('cin-visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  grid.querySelectorAll('.cin-gallery-item').forEach(function(el) { observer.observe(el); });
+}
 
-  function renderEmpty(mount, title, body) {
-    mount.innerHTML =
-      '<div class="empty-state" style="grid-column:1/-1;"><h4>' +
-      escapeHtml(title) +
-      "</h4><p>" +
-      escapeHtml(body) +
-      "</p></div>";
-  }
+function buildFilters(projects) {
+  var row = document.getElementById('projectFilters');
+  if (!row) return;
+  var cats = ['all'].concat(
+    projects.map(function(p) { return p.category; })
+      .filter(function(c, i, a) { return c && a.indexOf(c) === i; })
+  );
+  row.innerHTML = cats.map(function(c) {
+    return '<button class="pf-chip' + (c === 'all' ? ' active' : '') + '" data-cat="' + escapeHtml(c) + '">' + (c === 'all' ? 'All Projects' : escapeHtml(c)) + '</button>';
+  }).join('');
+  row.querySelectorAll('.pf-chip').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      row.querySelectorAll('.pf-chip').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      ACTIVE_CAT = btn.dataset.cat;
+      var filtered = ACTIVE_CAT === 'all' ? ALL_PROJECTS : ALL_PROJECTS.filter(function(p) { return p.category === ACTIVE_CAT; });
+      renderProjects(filtered);
+    });
+  });
+}
 
-  function reinitFadeUpLocal(mount) {
-    var els = mount.querySelectorAll(".fade-up");
-    if (!("IntersectionObserver" in window)) {
-      els.forEach(function (el) { el.classList.add("is-visible"); });
+function openLightbox(src, caption) {
+  if (!src) return;
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCaption').textContent = caption || '';
+  lb.classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+async function loadProjects() {
+  var grid = document.getElementById('projectGrid');
+  if (!grid || !window.bsClient) return;
+  grid.innerHTML = '<div class="cin-empty" style="grid-column:1/-1;"><span class="spinner"></span> Loading projects…</div>';
+  try {
+    var res = await window.bsClient.from('projects').select('*').order('created_at', { ascending: false });
+    if (res.error) throw res.error;
+    ALL_PROJECTS = res.data || [];
+    if (!ALL_PROJECTS.length) {
+      grid.innerHTML = '<div class="cin-empty" style="grid-column:1/-1;">No projects posted yet. Check back soon.</div>';
       return;
     }
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    els.forEach(function (el) { observer.observe(el); });
+    buildFilters(ALL_PROJECTS);
+    renderProjects(ALL_PROJECTS);
+  } catch(err) {
+    grid.innerHTML = '<div class="cin-empty" style="grid-column:1/-1;">Couldn\'t load projects. Please refresh the page.</div>';
   }
+}
 
-  function isSupabaseConfigured() {
-    return (
-      window.bsClient &&
-      window.BS_CONFIG &&
-      window.BS_CONFIG.supabaseAnonKey &&
-      window.BS_CONFIG.supabaseAnonKey.indexOf("REPLACE_WITH") !== 0
-    );
-  }
-
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-  function escapeAttr(str) { return escapeHtml(str); }
-})();
+document.addEventListener('DOMContentLoaded', loadProjects);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });

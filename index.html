@@ -3,31 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build Source — Finishing Materials | Addis Ababa</title>
-<meta name="description" content="Build Source supplies gypsum board, ceiling systems, partition systems, soundproofing and waterproofing materials in Addis Ababa. Built for quality, delivered for you.">
-<link rel="icon" type="image/png" href="logo.png">
+<title>Build Source — Finishing Materials, Addis Ababa</title>
+<meta name="description" content="Build Source supplies gypsum board, ceiling systems, partitions, soundproofing and waterproofing materials in Addis Ababa.">
+<link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="main.css">
 </head>
 <body>
+
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container nav-row">
     <a href="index.html" class="brand">
-      <img src="logo.png" alt="Build Source logo">
+      <img src="logo.png" alt="Build Source" height="38">
       <span class="brand-text">Build Source<small>Finishing Material</small></span>
     </a>
-    <nav class="nav-links" id="nav-links">
-      <a href="index.html" data-page="index.html">Home</a>
-      <a href="about.html" data-page="about.html">About</a>
-      <a href="products.html" data-page="products.html">Products</a>
-      <a href="services.html" data-page="services.html">Services</a>
-      <a href="gallery.html" data-page="gallery.html">Gallery</a>
-      <a href="contact.html" data-page="contact.html">Contact</a>
-      <a href="tel:+251911388498" class="btn btn-primary nav-mobile-cta">Call Now</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="index.html" class="nav-link is-active">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="products.html" class="nav-link">Products</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="contact.html" class="nav-link">Contact</a>
     </nav>
     <div class="nav-actions">
       <a href="tel:+251911388498" class="btn btn-primary nav-cta">Call Now</a>
@@ -40,177 +39,203 @@
 
 <main id="main">
 
-  <!-- HERO BANNER (full-bleed slideshow, photo-banner style) -->
+  <!-- ======= HERO BANNER (slideshow) ======= -->
   <section class="hero-banner2" data-slideshow2>
-
-    <div class="hb2-slide is-active" data-slide2 style="--hb2-grad:linear-gradient(120deg,#0F3D75,#1A5DAD); background-image:url('gypsum-board.jpg'); background-size:cover; background-position:center;">
+    <div class="hb2-slide is-active" data-slide2 style="background-image:url('gypsum-board.jpg');background-size:cover;background-position:center;">
       <div class="hb2-overlay"></div>
       <div class="container hb2-content">
-        <span class="hb2-label">Find top finishing materials in Addis Ababa</span>
-        <h1>QUALITY GYPSUM<br>&amp; CEILING SYSTEMS</h1>
+        <span class="hb2-label" data-char-split>Find top finishing materials in Addis Ababa</span>
+        <h1 data-word-split>QUALITY GYPSUM &amp; CEILING SYSTEMS</h1>
         <div class="hero-actions">
           <a href="about.html" class="btn btn-white">Learn More</a>
           <a href="products.html" class="btn btn-accent">Browse Products</a>
         </div>
       </div>
     </div>
-
-    <div class="hb2-slide" data-slide2 style="--hb2-grad:linear-gradient(120deg,#16345C,#3FAE49); background-image:url('partition-interior.jpg'); background-size:cover; background-position:center;">
+    <div class="hb2-slide" data-slide2 style="background-image:url('partition-interior.jpg');background-size:cover;background-position:center;">
       <div class="hb2-overlay"></div>
       <div class="container hb2-content">
-        <span class="hb2-label">Built tough, built to last</span>
-        <h1>PARTITION &amp;<br>SOUNDPROOF SYSTEMS</h1>
+        <span class="hb2-label" data-char-split>Built tough, built to last</span>
+        <h1 data-word-split>PARTITION &amp; SOUNDPROOF SYSTEMS</h1>
         <div class="hero-actions">
           <a href="about.html" class="btn btn-white">Learn More</a>
           <a href="products.html" class="btn btn-accent">Browse Products</a>
         </div>
       </div>
     </div>
-
-    <div class="hb2-slide" data-slide2 style="--hb2-grad:linear-gradient(120deg,#0B2545,#E3C374); background-image:url('ceiling-woodlook.jpg'); background-size:cover; background-position:center;">
+    <div class="hb2-slide" data-slide2 style="background-image:url('ceiling-woodlook.jpg');background-size:cover;background-position:center;">
       <div class="hb2-overlay"></div>
       <div class="container hb2-content">
-        <span class="hb2-label">Protect every project</span>
-        <h1>WATERPROOF &amp;<br>ALUMINUM CEILING</h1>
+        <span class="hb2-label" data-char-split>Protect every project</span>
+        <h1 data-word-split>WATERPROOF &amp; ALUMINUM CEILING</h1>
         <div class="hero-actions">
           <a href="about.html" class="btn btn-white">Learn More</a>
           <a href="products.html" class="btn btn-accent">Browse Products</a>
         </div>
       </div>
     </div>
-
-    <button class="hb2-arrow hb2-arrow-prev" data-slide2-prev aria-label="Previous slide">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <button class="hb2-arrow hb2-arrow-prev" data-slide2-prev aria-label="Previous">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
-    <button class="hb2-arrow hb2-arrow-next" data-slide2-next aria-label="Next slide">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <button class="hb2-arrow hb2-arrow-next" data-slide2-next aria-label="Next">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
-
     <div class="hb2-dots" data-slide2-dots></div>
   </section>
-  <script>
-    (function(){
-      var slides = document.querySelectorAll('[data-slide2]');
-      var dotsHost = document.querySelector('[data-slide2-dots]');
-      var idx = 0;
-      if (!slides.length) return;
-      slides.forEach(function(_, i){
-        var dot = document.createElement('button');
-        dot.className = 'hb2-dot' + (i === 0 ? ' is-active' : '');
-        dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
-        dot.addEventListener('click', function(){ goTo(i); });
-        dotsHost.appendChild(dot);
-      });
-      var dots = dotsHost.querySelectorAll('.hb2-dot');
-      function goTo(i){
-        slides[idx].classList.remove('is-active');
-        dots[idx].classList.remove('is-active');
-        idx = (i + slides.length) % slides.length;
-        slides[idx].classList.add('is-active');
-        dots[idx].classList.add('is-active');
-      }
-      document.querySelector('[data-slide2-prev]').addEventListener('click', function(){ goTo(idx - 1); resetTimer(); });
-      document.querySelector('[data-slide2-next]').addEventListener('click', function(){ goTo(idx + 1); resetTimer(); });
-      var timer = setInterval(function(){ goTo(idx + 1); }, 5000);
-      function resetTimer(){ clearInterval(timer); timer = setInterval(function(){ goTo(idx + 1); }, 5000); }
-    })();
-  </script>
 
-
-  <!-- TRUST STRIP -->
+  <!-- ======= TRUST STRIP ======= -->
   <div class="trust-strip">
     <div class="container trust-row">
-      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5V11C4 16 7.5 19.7 12 21C16.5 19.7 20 16 20 11V5L12 2Z" stroke="white" stroke-width="1.6"/></svg> Premium Quality Materials</div>
-      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="white" stroke-width="1.6"/><path d="M5 20C5 16.5 8 14.5 12 14.5C16 14.5 19 16.5 19 20" stroke="white" stroke-width="1.6"/></svg> Expert Installation Support</div>
-      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.2" stroke="white" stroke-width="1.6"/><path d="M12 7V12L15.5 14" stroke="white" stroke-width="1.6"/></svg> On-Time Delivery</div>
-      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 12L10.5 15.5L17.5 8" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg> Built for Quality, Delivered for You</div>
+      <div class="trust-item cin-up"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5V11C4 16 7.5 19.7 12 21C16.5 19.7 20 16 20 11V5L12 2Z" stroke="white" stroke-width="1.6"/></svg> Premium Quality Materials</div>
+      <div class="trust-item cin-up"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="white" stroke-width="1.6"/><path d="M5 20C5 16.5 8 14.5 12 14.5C16 14.5 19 16.5 19 20" stroke="white" stroke-width="1.6"/></svg> Expert Installation Support</div>
+      <div class="trust-item cin-up"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.2" stroke="white" stroke-width="1.6"/><path d="M12 7V12L15.5 14" stroke="white" stroke-width="1.6"/></svg> On-Time Delivery</div>
+      <div class="trust-item cin-up"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 12L10.5 15.5L17.5 8" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg> Built for Quality, Delivered for You</div>
     </div>
   </div>
 
-  <!-- PRODUCT HIGHLIGHT -->
-  <section class="section section-alt">
+  <!-- ======= CINEMATIC STATS ======= -->
+  <section class="cin-section section-alt">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">What We Supply</span>
-        <h2>Eight material lines, one source.</h2>
-        <p>Everything you need to finish a ceiling, wall or facade — without juggling five suppliers.</p>
+      <div class="section-head cin-up">
+        <span class="section-label">By The Numbers</span>
+        <h2>What we bring to every build.</h2>
+        <div class="cin-gold-line"></div>
       </div>
-      <div class="grid grid-4">
-        <article class="card product-card fade-up">
-          <div class="product-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="1" stroke="#1554A8" stroke-width="1.6"/><path d="M3 11H21" stroke="#1554A8" stroke-width="1.6"/></svg></div>
-          <span class="product-tag">Board</span>
-          <h3>Gypsum Board</h3>
-          <p>Standard, moisture-resistant and fire-rated boards for ceilings and partitions.</p>
-        </article>
-        <article class="card product-card fade-up">
-          <div class="product-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="1" stroke="#1554A8" stroke-width="1.6"/><path d="M3 10H21M9 10V20" stroke="#1554A8" stroke-width="1.6"/></svg></div>
-          <span class="product-tag">Ceiling</span>
-          <h3>Ceiling Systems</h3>
-          <p>Suspended grid and tile systems for offices, retail and residential spaces.</p>
-        </article>
-        <article class="card product-card fade-up">
-          <div class="product-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3V21M6 3V21M18 3V21" stroke="#1554A8" stroke-width="1.6"/></svg></div>
-          <span class="product-tag">Partition</span>
-          <h3>Partition Systems</h3>
-          <p>Drywall and demountable partition frames built for fast, clean installs.</p>
-        </article>
-        <article class="card product-card fade-up">
-          <div class="product-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12C4 12 8 6 12 6C16 6 20 12 20 12C20 12 16 18 12 18C8 18 4 12 4 12Z" stroke="#1554A8" stroke-width="1.6"/><circle cx="12" cy="12" r="2.2" stroke="#1554A8" stroke-width="1.6"/></svg></div>
-          <span class="product-tag">Acoustic</span>
-          <h3>Soundproof Systems</h3>
-          <p>Acoustic boards and insulation layers that cut noise transfer between rooms.</p>
-        </article>
-      </div>
-      <div class="text-center mt-2">
-        <a href="products.html" class="btn btn-secondary">View All 8 Product Lines</a>
+      <div class="cin-stats">
+        <div class="cin-stat cin-up">
+          <div class="cin-number"><span data-count="8" data-suffix="+">0+</span></div>
+          <div class="cin-number-label">Material systems</div>
+        </div>
+        <div class="cin-stat cin-up">
+          <div class="cin-number"><span data-count="100" data-suffix="%">0%</span></div>
+          <div class="cin-number-label">Installation support</div>
+        </div>
+        <div class="cin-stat cin-up">
+          <div class="cin-number" style="font-size:clamp(1.8rem,4vw,3rem);">On Time</div>
+          <div class="cin-number-label">Every delivery</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="layer-divider" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-
-  <!-- WHY US -->
-  <section class="section">
+  <!-- ======= PRODUCTS STRIP ======= -->
+  <section class="cin-section">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Why Build Source</span>
-        <h2>Material supply that respects your timeline.</h2>
-        <p>Finishing work stalls when materials don't show up. We built our delivery and stock process to remove that risk.</p>
-      </div>
-      <div class="grid grid-2" style="gap: clamp(2rem, 5vw, 4rem); align-items: start;">
-        <div>
-          <div class="feature-row">
-            <span class="feature-num">01</span>
-            <div><h4>Stock you can rely on</h4><p>Our 8 product lines are kept in regular stock, so your order doesn't wait on a re-supply cycle.</p></div>
-          </div>
-          <div class="feature-row">
-            <span class="feature-num">02</span>
-            <div><h4>Delivered to site</h4><p>Our own vehicle handles delivery across Addis Ababa, tracked from dispatch to drop-off.</p></div>
-          </div>
+      <div class="cin-split">
+        <div class="cin-split-text cin-left">
+          <span class="section-label">What We Supply</span>
+          <h2>Eight material<br>lines, one source.</h2>
+          <div class="cin-gold-line"></div>
+          <p style="color:var(--bs-steel);line-height:1.7;max-width:400px;">Everything you need to finish a ceiling, wall or facade — without juggling five different suppliers. Gypsum board, ceiling systems, partitions, waterproofing and more.</p>
+          <a href="products.html" class="cin-product-cta" style="margin-top:28px;display:inline-flex;">View all products &amp; pricing →</a>
         </div>
-        <div>
-          <div class="feature-row">
-            <span class="feature-num">03</span>
-            <div><h4>Installation guidance included</h4><p>Need advice on the right board, grid spacing or waterproofing layer? Our team talks it through with you first.</p></div>
-          </div>
-          <div class="feature-row">
-            <span class="feature-num">04</span>
-            <div><h4>Straightforward pricing</h4><p>No hidden markups between you and the material — quoted clearly, every time.</p></div>
+        <div class="cin-right" style="overflow:hidden;">
+          <div class="product-strip-wrap" id="homeStripWrap">
+            <div class="product-strip" id="homeProductStrip">
+              <!-- Loaded from Supabase; fallback cards below -->
+              <div class="cin-strip-card">
+                <div style="height:170px;background:linear-gradient(135deg,#0D1A2E,#1A3050);display:flex;align-items:center;justify-content:center;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="1" stroke="#D4AF5A" stroke-width="1.4"/><path d="M3 11H21" stroke="#D4AF5A" stroke-width="1.4"/></svg></div>
+                <div class="cin-strip-body"><div class="cin-strip-cat">Board</div><h3>Gypsum Board</h3><div class="cin-strip-price" style="color:var(--bs-steel);font-size:12px;">Contact for price</div></div>
+              </div>
+              <div class="cin-strip-card">
+                <div style="height:170px;background:linear-gradient(135deg,#0D1A2E,#1A3050);display:flex;align-items:center;justify-content:center;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 8L12 4L21 8V18H3V8Z" stroke="#D4AF5A" stroke-width="1.4"/></svg></div>
+                <div class="cin-strip-body"><div class="cin-strip-cat">Ceiling</div><h3>Ceiling Systems</h3><div class="cin-strip-price" style="color:var(--bs-steel);font-size:12px;">Contact for price</div></div>
+              </div>
+              <div class="cin-strip-card">
+                <div style="height:170px;background:linear-gradient(135deg,#0D1A2E,#1A3050);display:flex;align-items:center;justify-content:center;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 4V20M12 4V20M20 4V20" stroke="#D4AF5A" stroke-width="1.4"/></svg></div>
+                <div class="cin-strip-body"><div class="cin-strip-cat">Partition</div><h3>Partition Systems</h3><div class="cin-strip-price" style="color:var(--bs-steel);font-size:12px;">Contact for price</div></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section-tight">
+  <!-- ======= WHY US CINEMATIC ======= -->
+  <section class="cin-section section-alt">
     <div class="container">
-      <div class="cta-banner fade-up">
-        <h3>Have a project starting soon? Let's talk materials.</h3>
-        <div class="hero-actions" style="margin:0;">
-          <a href="https://wa.me/251901028789" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp Us</a>
-          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+      <div class="section-head cin-up" style="text-align:center;max-width:560px;margin:0 auto 56px;">
+        <span class="section-label">Why Build Source</span>
+        <h2>Quality you can lean on.</h2>
+        <div class="cin-gold-line" style="margin:14px auto 0;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;" class="why-grid-cin">
+        <div class="service-icon-card cin-up">
+          <div class="sic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg></div>
+          <div><h3>Premium quality materials</h3><p>Every board, panel and system sourced for a long-lasting, strong finish.</p></div>
         </div>
+        <div class="service-icon-card cin-up">
+          <div class="sic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+          <div><h3>Expert installation support</h3><p>Our team helps your installers get the system right the first time.</p></div>
+        </div>
+        <div class="service-icon-card cin-up">
+          <div class="sic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div><h3>On-time delivery</h3><p>We schedule around your site — materials arrive when you need them.</p></div>
+        </div>
+        <div class="service-icon-card cin-up">
+          <div class="sic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M8 12l3 3 5-6"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div><h3>Built for quality, delivered for you</h3><p>From quote to delivery, we treat your project as our own.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TESTIMONIALS ======= -->
+  <section class="cin-section">
+    <div class="container">
+      <div class="section-head cin-up" style="text-align:center;max-width:480px;margin:0 auto 48px;">
+        <span class="section-label">What Clients Say</span>
+        <h2>Trusted by builders across Addis.</h2>
+        <div class="cin-gold-line" style="margin:14px auto 0;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="testimonial-card cin-scale">
+          <div class="stars">★★★★★</div>
+          <p>"Materials arrived exactly when promised, and the ceiling system was everything we specced. Easy to work with."</p>
+          <div class="who"><div class="avatar">DT</div><div><div class="name">Dawit T.</div><div class="role">Site Contractor</div></div></div>
+        </div>
+        <div class="testimonial-card cin-scale">
+          <div class="stars">★★★★★</div>
+          <p>"Their team walked our installers through the partition system before delivery — saved us a lot of back and forth."</p>
+          <div class="who"><div class="avatar">SM</div><div><div class="name">Selam M.</div><div class="role">Project Manager</div></div></div>
+        </div>
+        <div class="testimonial-card cin-scale">
+          <div class="stars">★★★★★</div>
+          <p>"Good prices, good quality boards, and they actually pick up the phone. That's rare in this business."</p>
+          <div class="who"><div class="avatar">YA</div><div><div class="name">Yonas A.</div><div class="role">Property Developer</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= DELIVERY STRIP ======= -->
+  <div class="delivery-strip">
+    <div class="road"></div>
+    <svg class="truck" viewBox="0 0 200 70" fill="none">
+      <rect x="2" y="22" width="100" height="34" rx="2" fill="#F5F7FA"/>
+      <rect x="6" y="26" width="92" height="6" fill="#3FAE49"/>
+      <rect x="102" y="30" width="44" height="26" rx="2" fill="#F5F7FA"/>
+      <rect x="108" y="34" width="14" height="10" fill="#0F3D75" opacity=".4"/>
+      <circle cx="32" cy="60" r="9" fill="#0F3D75"/><circle cx="32" cy="60" r="3.5" fill="#F5F7FA"/>
+      <circle cx="124" cy="60" r="9" fill="#0F3D75"/><circle cx="124" cy="60" r="3.5" fill="#F5F7FA"/>
+    </svg>
+    <div class="wrap" style="max-width:1180px;margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;position:relative;z-index:2;">
+      <div><h3 class="cin-up">On time, every time — that's the delivery.</h3><p style="color:#B9CCE6;font-size:14px;margin-top:8px;">Local delivery across Addis Ababa for every order.</p></div>
+      <a class="btn btn-green cin-up" href="https://wa.me/251901028789" target="_blank" rel="noopener">Get a delivery quote</a>
+    </div>
+  </div>
+
+  <!-- ======= CTA ======= -->
+  <section class="cin-section section-alt" style="text-align:center;">
+    <div class="container" style="max-width:600px;">
+      <span class="section-label cin-up">Get Started</span>
+      <h2 class="cin-up" style="font-size:clamp(2rem,5vw,3.2rem);margin:16px 0;">Ready to start<br>your project?</h2>
+      <div class="cin-gold-line cin-up" style="margin:0 auto 28px;"></div>
+      <p class="cin-up" style="color:var(--bs-steel);margin-bottom:32px;">Tell us what your site needs and we'll get back to you the same day with pricing and a delivery window.</p>
+      <div class="cin-up" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+        <a class="btn btn-green" href="https://wa.me/251901028789" target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
     </div>
   </section>
@@ -221,50 +246,60 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand">
-          <img src="logo.png" alt="Build Source logo">
-          <strong>Build Source</strong>
-        </div>
-        <p>Finishing materials for ceilings, partitions, soundproofing and waterproofing — supplied and delivered across Addis Ababa.</p>
+        <div class="brand footer-brand"><img src="logo.png" alt="Build Source" height="32"> Build Source</div>
+        <p>Finishing materials supplier in Addis Ababa — built for quality, delivered for you.</p>
       </div>
-      <div class="footer-col">
-        <h5>Navigate</h5>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="products.html">Products</a>
-        <a href="gallery.html">Gallery</a>
+      <div>
+        <h5>Site</h5>
+        <ul><li><a href="about.html">About Us</a></li><li><a href="products.html">Products</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li></ul>
       </div>
-      <div class="footer-col">
+      <div>
         <h5>Contact</h5>
-        <a href="tel:+251911388498">+251 911 388 498</a>
-        <a href="https://wa.me/251901028789" target="_blank" rel="noopener">WhatsApp: +251 901 028 789</a>
-        <a href="mailto:Buildsoursetrading@gmail.com">Buildsoursetrading@gmail.com</a>
+        <ul>
+          <li><a href="tel:+251911388498">+251 911 388 498</a></li>
+          <li><a href="https://wa.me/251901028789" target="_blank" rel="noopener">+251 901 028 789 (WhatsApp)</a></li>
+          <li><a href="mailto:Buildsoursetrading@gmail.com">Buildsoursetrading@gmail.com</a></li>
+          <li><a href="https://maps.app.goo.gl/7VUdG9PiHASHposQ7" target="_blank" rel="noopener">View on Google Maps →</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h5>Location</h5>
-        <p>Addis Ababa, Ethiopia</p>
-        <a href="https://maps.app.goo.gl/7VUdG9PiHASHposQ7" target="_blank" rel="noopener">View on Google Maps →</a>
-      </div>
-      <div class="footer-col">
+      <div>
         <h5>Follow Us</h5>
         <div class="footer-social">
-          <a href="https://www.tiktok.com/@buildsourcetrading?_r=1&_t=ZS-97U4F4zvS5d" target="_blank" rel="noopener" aria-label="Build Source on TikTok" class="social-icon">
+          <a href="https://www.tiktok.com/@buildsourcetrading?_r=1&_t=ZS-97U4F4zvS5d" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82c-.93-.61-1.6-1.55-1.85-2.65h-3.05v13.07c0 1.43-1.16 2.6-2.6 2.6a2.6 2.6 0 1 1 0-5.2c.27 0 .53.04.78.11V10.7a5.65 5.65 0 0 0-.78-.05A5.65 5.65 0 0 0 3.45 16.3a5.65 5.65 0 0 0 5.65 5.65 5.65 5.65 0 0 0 5.65-5.65V9.4a7.6 7.6 0 0 0 4.4 1.4V7.75a4.7 4.7 0 0 1-2.55-1.93Z" fill="currentColor"/></svg>
           </a>
         </div>
       </div>
     </div>
-    <div class="truck-strip" aria-hidden="true">
-      <div class="truck-track"></div>
-      <div class="truck-icon"></div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span data-year></span> Build Source. All rights reserved.</span>
-      <span>Built for Quality, Delivered for You.</span>
-    </div>
+    <div class="footer-bottom"><div>© 2026 Build Source. All rights reserved.</div><div>Built for quality, delivered for you.</div></div>
   </div>
 </footer>
 
+<a class="wa-float" href="https://wa.me/251901028789" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M12.01 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.33A9.93 9.93 0 0012.01 22C17.54 22 22 17.52 22 12S17.54 2 12.01 2zm5.6 14.13c-.24.67-1.39 1.28-1.92 1.34-.49.06-1.1.08-1.78-.11-.41-.12-.94-.3-1.61-.59-2.84-1.22-4.69-4.07-4.83-4.26-.14-.19-1.16-1.54-1.16-2.94 0-1.4.74-2.08 1-2.37.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.17.01.41-.07.64.49.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.66-.05.18-.18.74-.86.94-1.16.2-.3.4-.25.66-.15.27.1 1.7.8 1.99.94.29.15.49.22.56.34.07.13.07.74-.17 1.4z"/></svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="supabase-client.js"></script>
 <script src="main.js"></script>
+<script>
+// Load live products into homepage strip
+document.addEventListener('DOMContentLoaded', function () {
+  if (!window.bsClient) return;
+  var strip = document.getElementById('homeProductStrip');
+  if (!strip) return;
+  window.bsClient.from('products').select('*').order('created_at',{ascending:false}).limit(8)
+    .then(function(res) {
+      if (res.error || !res.data || !res.data.length) return;
+      strip.innerHTML = res.data.map(function(p) {
+        var img = p.image_url
+          ? '<img class="cin-strip-img" src="'+p.image_url+'" alt="'+(p.name||'')+'" loading="lazy">'
+          : '<div style="height:170px;background:linear-gradient(135deg,#0D1A2E,#1A3050);display:flex;align-items:center;justify-content:center;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="1" stroke="#D4AF5A" stroke-width="1.4"/></svg></div>';
+        var price = p.price ? '<div class="cin-strip-price">'+p.price+'</div>' : '<div class="cin-strip-price" style="color:var(--bs-steel);font-size:12px;">Contact for price</div>';
+        return '<div class="cin-strip-card">'+img+'<div class="cin-strip-body"><div class="cin-strip-cat">'+(p.category||'Material')+'</div><h3>'+(p.name||'')+'</h3>'+price+'</div></div>';
+      }).join('');
+    });
+});
+</script>
 </body>
 </html>

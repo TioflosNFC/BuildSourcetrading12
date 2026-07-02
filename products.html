@@ -3,144 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Products — Build Source Finishing Materials</title>
-<meta name="description" content="Browse Build Source's finishing material lines: gypsum board, ceiling systems, partition systems, soundproofing, waterproofing, aluminum and Armstrong ceilings, and cement board.">
-<link rel="icon" type="image/png" href="logo.png">
+<title>Products & Pricing — Build Source</title>
+<link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="main.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container nav-row">
-    <a href="index.html" class="brand">
-      <img src="logo.png" alt="Build Source logo">
-      <span class="brand-text">Build Source<small>Finishing Material</small></span>
-    </a>
+    <a href="index.html" class="brand"><img src="logo.png" alt="Build Source" height="38"><span class="brand-text">Build Source<small>Finishing Material</small></span></a>
     <nav class="nav-links" id="nav-links">
-      <a href="index.html" data-page="index.html">Home</a>
-      <a href="about.html" data-page="about.html">About</a>
-      <a href="products.html" data-page="products.html">Products</a>
-      <a href="services.html" data-page="services.html">Services</a>
-      <a href="gallery.html" data-page="gallery.html">Gallery</a>
-      <a href="contact.html" data-page="contact.html">Contact</a>
-      <a href="tel:+251911388498" class="btn btn-primary nav-mobile-cta">Call Now</a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="products.html" class="nav-link is-active">Products</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="contact.html" class="nav-link">Contact</a>
     </nav>
     <div class="nav-actions">
       <a href="tel:+251911388498" class="btn btn-primary nav-cta">Call Now</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
 <main id="main">
-
-  <section class="page-header">
-    <div class="container">
-      <span class="breadcrumb"><a href="index.html">Home</a> / Products</span>
-      <h1>Our product lines.</h1>
-      <p>Eight finishing material categories, kept in regular stock and ready for site delivery across Addis Ababa.</p>
+  <section class="page-hero">
+    <div class="blueprint-grid"></div>
+    <div class="container page-hero-inner">
+      <span class="eyebrow cin-up"><span class="dot"></span> PRODUCTS &amp; PRICING</span>
+      <h1 class="cin-up" data-word-split>Materials &amp; current pricing.</h1>
+      <p class="lead cin-up">Prices kept up to date by our team. For bulk orders or anything not listed, contact us directly.</p>
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="container">
-      <div class="grid grid-4" data-products-grid>
-        <!-- Populated from Supabase via js/products.js -->
-      </div>
+  <section class="product-showcase">
+    <div class="product-showcase-filter" id="productFilters">
+      <button class="pf-chip active" data-cat="all">All Products</button>
+    </div>
+    <div id="productShowcase">
+      <div class="cin-empty"><span class="spinner"></span> Loading products…</div>
     </div>
   </section>
 
-  <div class="layer-divider" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-
-  <!-- Static reference categories (always visible even before admin adds live products) -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Full Catalogue</span>
-        <h2>What's included in our range.</h2>
-        <p>These are the eight lines we keep in stock. Specific items, sizes and pricing are kept current on the grid above.</p>
-      </div>
-      <div class="grid grid-4">
-        <article class="card product-card fade-up"><span class="product-tag">Board</span><h3>Gypsum Board</h3><p>Standard, moisture-resistant and fire-rated.</p></article>
-        <article class="card product-card fade-up"><span class="product-tag">Ceiling</span><h3>Ceiling Systems</h3><p>Suspended grid and tile systems.</p></article>
-        <article class="card product-card fade-up"><span class="product-tag">Partition</span><h3>Partition Systems</h3><p>Drywall and demountable framing.</p></article>
-        <article class="card product-card fade-up"><span class="product-tag">Acoustic</span><h3>Soundproof Systems</h3><p>Acoustic boards and insulation layers.</p></article>
-        <article class="card product-card fade-up"><span class="product-tag">Waterproof</span><h3>Waterproof Solutions</h3><p>Membranes and coatings for wet areas and facades.</p></article>
-        <article class="card product-card fade-up"><span class="product-tag">Ceiling</span><h3>Aluminum Ceiling</h3><p>Durable, moisture-resistant aluminum ceiling panels.</p></article>
-        <article class="card product-card fade-up"><span class="product-tag">Ceiling</span><h3>Armstrong Ceiling</h3><p>Mineral fiber tiles for commercial-grade finishes.</p></article>
-        <article class="card product-card fade-up"><span class="product-tag">Board</span><h3>Cement Board</h3><p>High-durability board for high-moisture and exterior use.</p></article>
+  <section class="cin-section section-alt" style="text-align:center;padding:60px 0;">
+    <div class="container" style="max-width:520px;">
+      <div class="cin-form-card cin-up">
+        <h3>Don't see what you need?</h3>
+        <p class="form-sub">Send us the material and quantity — we'll quote it directly.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+          <a class="btn btn-green" href="https://wa.me/251901028789" target="_blank" rel="noopener">Request on WhatsApp</a>
+          <a class="btn btn-ghost" href="contact.html">Use Contact Form</a>
+        </div>
       </div>
     </div>
   </section>
-
-  <section class="section-tight">
-    <div class="container">
-      <div class="cta-banner fade-up">
-        <h3>Not sure which material fits your project?</h3>
-        <a href="https://wa.me/251901028789" target="_blank" rel="noopener" class="btn btn-primary">Ask on WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="logo.png" alt="Build Source logo">
-          <strong>Build Source</strong>
-        </div>
-        <p>Finishing materials for ceilings, partitions, soundproofing and waterproofing — supplied and delivered across Addis Ababa.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Navigate</h5>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="products.html">Products</a>
-        <a href="gallery.html">Gallery</a>
-      </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <a href="tel:+251911388498">+251 911 388 498</a>
-        <a href="https://wa.me/251901028789" target="_blank" rel="noopener">WhatsApp: +251 901 028 789</a>
-        <a href="mailto:Buildsoursetrading@gmail.com">Buildsoursetrading@gmail.com</a>
-      </div>
-      <div class="footer-col">
-        <h5>Location</h5>
-        <p>Addis Ababa, Ethiopia</p>
-        <a href="https://maps.app.goo.gl/7VUdG9PiHASHposQ7" target="_blank" rel="noopener">View on Google Maps →</a>
-      </div>
-      <div class="footer-col">
-        <h5>Follow Us</h5>
-        <div class="footer-social">
-          <a href="https://www.tiktok.com/@buildsourcetrading?_r=1&_t=ZS-97U4F4zvS5d" target="_blank" rel="noopener" aria-label="Build Source on TikTok" class="social-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82c-.93-.61-1.6-1.55-1.85-2.65h-3.05v13.07c0 1.43-1.16 2.6-2.6 2.6a2.6 2.6 0 1 1 0-5.2c.27 0 .53.04.78.11V10.7a5.65 5.65 0 0 0-.78-.05A5.65 5.65 0 0 0 3.45 16.3a5.65 5.65 0 0 0 5.65 5.65 5.65 5.65 0 0 0 5.65-5.65V9.4a7.6 7.6 0 0 0 4.4 1.4V7.75a4.7 4.7 0 0 1-2.55-1.93Z" fill="currentColor"/></svg>
-          </a>
-        </div>
-      </div>
+      <div><div class="brand footer-brand"><img src="logo.png" alt="Build Source" height="32"> Build Source</div><p>Finishing materials supplier in Addis Ababa — built for quality, delivered for you.</p></div>
+      <div><h5>Site</h5><ul><li><a href="about.html">About Us</a></li><li><a href="products.html">Products</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+      <div><h5>Contact</h5><ul><li><a href="tel:+251911388498">+251 911 388 498</a></li><li><a href="https://wa.me/251901028789" target="_blank" rel="noopener">+251 901 028 789 (WhatsApp)</a></li><li><a href="mailto:Buildsoursetrading@gmail.com">Buildsoursetrading@gmail.com</a></li><li><a href="https://maps.app.goo.gl/7VUdG9PiHASHposQ7" target="_blank" rel="noopener">View on Google Maps →</a></li></ul></div>
+      <div><h5>Follow Us</h5><div class="footer-social"><a href="https://www.tiktok.com/@buildsourcetrading" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82c-.93-.61-1.6-1.55-1.85-2.65h-3.05v13.07c0 1.43-1.16 2.6-2.6 2.6a2.6 2.6 0 1 1 0-5.2c.27 0 .53.04.78.11V10.7a5.65 5.65 0 0 0-.78-.05A5.65 5.65 0 0 0 3.45 16.3a5.65 5.65 0 0 0 5.65 5.65 5.65 5.65 0 0 0 5.65-5.65V9.4a7.6 7.6 0 0 0 4.4 1.4V7.75a4.7 4.7 0 0 1-2.55-1.93Z" fill="currentColor"/></svg></a></div></div>
     </div>
-    <div class="truck-strip" aria-hidden="true">
-      <div class="truck-track"></div>
-      <div class="truck-icon"></div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span data-year></span> Build Source. All rights reserved.</span>
-      <span>Built for Quality, Delivered for You.</span>
-    </div>
+    <div class="footer-bottom"><div>© 2026 Build Source. All rights reserved.</div><div>Built for quality, delivered for you.</div></div>
   </div>
 </footer>
 
-<script src="main.js"></script>
+<a class="wa-float" href="https://wa.me/251901028789" aria-label="Chat on WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.01 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.33A9.93 9.93 0 0012.01 22C17.54 22 22 17.52 22 12S17.54 2 12.01 2zm5.6 14.13c-.24.67-1.39 1.28-1.92 1.34-.49.06-1.1.08-1.78-.11-.41-.12-.94-.3-1.61-.59-2.84-1.22-4.69-4.07-4.83-4.26-.14-.19-1.16-1.54-1.16-2.94 0-1.4.74-2.08 1-2.37.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.17.01.41-.07.64.49.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.66-.05.18-.18.74-.86.94-1.16.2-.3.4-.25.66-.15.27.1 1.7.8 1.99.94.29.15.49.22.56.34.07.13.07.74-.17 1.4z"/></svg></a>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-client.js"></script>
+<script src="main.js"></script>
 <script src="products.js"></script>
 </body>
 </html>
